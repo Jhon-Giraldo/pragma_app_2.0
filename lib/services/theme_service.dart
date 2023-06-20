@@ -3,12 +3,12 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class ThemeService extends ChangeNotifier {
-  ThemeService({
-    required this.lightColorScheme,
-    required this.darkColorScheme,
-    required this.colorSeed,
-    this.textTheme,
-  }) {
+  ThemeService(
+      {required this.lightColorScheme,
+      required this.darkColorScheme,
+      required this.colorSeed,
+      this.textTheme,
+      this.isDark = false,}) {
     _themeValuenotifier = ValueNotifier<ThemeData>(
       customThemeFromColorScheme(
         lightColorScheme,
@@ -21,7 +21,7 @@ class ThemeService extends ChangeNotifier {
   final Color colorSeed;
   final TextTheme? textTheme;
 
-  bool isDark = false;
+  bool isDark;
   late ValueNotifier<ThemeData> _themeValuenotifier;
 
   ValueNotifier<ThemeData> get themeValuenotifier => _themeValuenotifier;
