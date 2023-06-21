@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../blocs/bloc_responsive.dart';
 import '../../../../blocs/navigator_bloc.dart';
 import '../../../../ui/widgets/responsive/my_app_scaffold_widget.dart';
+import '../widgets/basic_profile_widget.dart';
 import '../widgets/card_option_widget.dart';
 
 class OnboardingPage extends StatelessWidget {
@@ -29,7 +30,14 @@ class OnboardingPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               //Widget del perfil
-
+              BasicProfileWidget(
+                key: const Key(
+                  'OnboardingPage_BasicProfileWidget_UserProfileCard',
+                ),
+                responsiveBloc: responsiveBloc,
+                navigatorBloc: navigatorBloc,
+              ),
+              spaceCard,
               CardOptionWidget(
                 key: const Key(
                   'OnBoardingPage_CardOptionWidget_radioStationCard',
@@ -48,6 +56,16 @@ class OnboardingPage extends StatelessWidget {
                 onTap: () {},
               ),
               spaceCard,
+              Stack(
+                children: <Widget>[
+                  CardOptionWidget(
+                    responsiveBloc: responsiveBloc,
+                    urlImage: 'assets/img/galaxia_asignacion.png',
+                    title: 'Asignación',
+                    onTap: () {},
+                  ),
+                ],
+              )
             ],
           ),
         ),

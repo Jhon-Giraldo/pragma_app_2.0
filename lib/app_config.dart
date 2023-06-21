@@ -49,6 +49,8 @@ FutureOr<void> demoInsert(BlocCore<dynamic> blocCoreInt) async {
       .getBlocModule<NavigatorBloc>(NavigatorBloc.name)
       .setHomePageAndUpdate(
         LoginMainPage(
+          navigatorBloc: blocCoreInt.getBlocModule(NavigatorBloc.name),
+          responsivebLOC: blocCoreInt.getBlocModule(ResponsiveBloc.name),
           blocAuth: blocCoreInt.getBlocModule<BlocAuth>(BlocAuth.name),
         ),
       );

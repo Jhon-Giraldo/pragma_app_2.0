@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 
 import '../../blocs/bloc_auth.dart';
+import '../../blocs/bloc_responsive.dart';
+import '../../blocs/navigator_bloc.dart';
 import '../../models/bloc_auth_state.dart';
+import '../../modules/onboarding/ui/pages/onboarding_page.dart';
 import 'loading_animation_page.dart';
 
 class LoginMainPage extends StatelessWidget {
   const LoginMainPage({
     required this.blocAuth,
+    required this.responsivebLOC,
+    required this.navigatorBloc,
     super.key,
   });
 
   final BlocAuth blocAuth;
+  final ResponsiveBloc responsivebLOC;
+  final NavigatorBloc navigatorBloc;
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +44,9 @@ class LoginMainPage extends StatelessWidget {
               );
             }
             if (snapshot.data?.modelUser.isActiveSession ?? false) {
-              return Center(
-                child:
-                    Text('On boarding', style: TextStyle(color: Colors.white)),
+              return OnboardingPage(
+                navigatorBloc: navigatorBloc,
+                responsiveBloc: responsivebLOC,
               );
             }
           }
