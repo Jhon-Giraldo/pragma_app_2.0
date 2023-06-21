@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../blocs/bloc_auth.dart';
 import '../../models/bloc_auth_state.dart';
+import 'loading_animation_page.dart';
 
 class LoginMainPage extends StatelessWidget {
   const LoginMainPage({
@@ -20,13 +21,18 @@ class LoginMainPage extends StatelessWidget {
         builder: (BuildContext context, AsyncSnapshot<BlocAuthState> snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data?.isLoading ?? false) {
-              return const Center(child: CircularProgressIndicator());
+              return const LoadingAnimationPage();
             }
             if (snapshot.data?.hasError != null) {
               return Center(
-                child: Text(
-                  snapshot.data!.hasError!,
-                  style: const TextStyle(color: Colors.white),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      snapshot.data!.hasError!,
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ],
                 ),
               );
             }
@@ -83,11 +89,10 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             onPressed: () async {
-              blocAuth.logIn('', '');
+              loginDialog(context);
             },
             child: Row(
               mainAxisSize: MainAxisSize.min,
-              // mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Image.asset(
                   'assets/img/google_logo.png',
@@ -106,6 +111,33 @@ class LoginPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Future<dynamic> loginDialog(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Iniciar sesión'),
+          actions: <Widget>[
+            MaterialButton(
+              onPressed: () {
+                blocAuth.logIn('a@gmail.com', 'a');
+                Navigator.pop(context);
+              },
+              child: const Text('Si'),
+            ),
+            MaterialButton(
+              onPressed: () {
+                blocAuth.logIn('', '');
+                Navigator.pop(context);
+              },
+              child: const Text('No'),
+            )
+          ],
+        );
+      },
     );
   }
 }

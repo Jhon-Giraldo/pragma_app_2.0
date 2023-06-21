@@ -102,6 +102,7 @@ Future<void> onboarding({
         ],
       ),
     );
+
 // redirigimos al onboarding
     blocCoreInt
         .getBlocModule<NavigatorBloc>(NavigatorBloc.name)
