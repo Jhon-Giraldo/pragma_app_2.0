@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'loading_animation_circle_widget_1.dart';
-import 'loading_animation_circle_widget_2.dart';
-import 'loading_animation_circle_widget_3.dart';
-import 'loading_animation_circle_widget_4.dart';
-
-void main() {
-  runApp(const LoadingAnimationPage());
-}
+import '../widgets/loading_animation_circle/loading_animation_circle_widget_1.dart';
+import '../widgets/loading_animation_circle/loading_animation_circle_widget_2.dart';
+import '../widgets/loading_animation_circle/loading_animation_circle_widget_3.dart';
+import '../widgets/loading_animation_circle/loading_animation_circle_widget_4.dart';
 
 class LoadingAnimationPage extends StatelessWidget {
   const LoadingAnimationPage({super.key});
