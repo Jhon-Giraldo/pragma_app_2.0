@@ -26,11 +26,13 @@ class MyAppScaffold extends StatelessWidget {
     this.child,
     this.withMargin = true,
     this.withAppbar = true,
+    this.backgroundColor = Colors.white,
     this.blocCoreExt,
     super.key,
   });
   final Widget? child;
   final bool withMargin, withAppbar;
+  final Color backgroundColor;
   final BlocCore<dynamic>? blocCoreExt;
 
   @override
