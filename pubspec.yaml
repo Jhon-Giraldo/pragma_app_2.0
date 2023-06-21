@@ -12,20 +12,19 @@ dependencies:
 
 
   cupertino_icons: ^1.0.2
-  flutter_native_splash: ^2.2.16
-  flutter_launcher_icons: ^0.11.0
-  # google_fonts: ^4.0.3
+  
+  google_fonts: ^4.0.3
 
 # configuracion Splash screen
 flutter_native_splash:
-  color: "#df11f2"
-  color_dark: "#28022b"
-  image: "assets/icon.png"
-  
+  color: "#170339"
+  color_dark: "#170339"
+  image: "assets/img/isotipo.png"
+
   android_12:
-    color: "#df11f2"
-    color_dark: "#28022b"
-    image: "assets/icon.png"
+    color: "#170339"
+    color_dark: "#170339"
+    image: "assets/img/isotipo.png"
 
 flutter_icons:
   image_path: "assets/icon.png"
@@ -42,6 +41,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.1
+  flutter_native_splash: ^2.2.16
+  flutter_launcher_icons: ^0.11.0
 
 
 # The following section is specific to Flutter packages.
@@ -51,6 +52,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
+    - assets/img/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
