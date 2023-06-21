@@ -97,7 +97,7 @@ class CirclePainter extends CustomPainter {
       ..strokeWidth = 2.5
       ..style = PaintingStyle.stroke;
 
-    const double circleRadius = 6;
+    const double circleRadius = 5;
     final double widthCenter = size.width / 2;
     const double spaceBetween = 28;
 
