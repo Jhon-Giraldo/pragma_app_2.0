@@ -3,7 +3,7 @@ import 'dart:async';
 import '../entities/entity_bloc.dart';
 import '../models/model_user.dart';
 import '../providers/auth_session_provider.dart';
-import 'bloc_auth_state.dart';
+import '../models/bloc_auth_state.dart';
 
 class BlocAuth extends BlocModule {
   BlocAuth({required this.authSessionProvider});

@@ -1,24 +1,24 @@
-import '../models/model_user.dart';
+import 'model_user.dart';
 
 class BlocAuthState {
   const BlocAuthState({
     required this.modelUser,
     required this.initState,
     required this.isLoading,
-    required this.hasError,
+    this.hasError,
   });
 
   BlocAuthState.empty({
     this.modelUser = const ModelUser(),
     this.initState = true,
     this.isLoading = false,
-    this.hasError = '',
+    this.hasError,
   });
 
   final ModelUser modelUser;
   final bool initState;
   final bool isLoading;
-  final String hasError;
+  final String? hasError;
 
   BlocAuthState copyWith({
     ModelUser? modelUser,
