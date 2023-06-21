@@ -9,7 +9,7 @@ import '../ui/pages/onboarding_page.dart';
 
 class OnboardingConfig extends ConfigModule {
   @override
-  void initConfigModule() async {
+  Future<void> initConfigModule() async {
     final BlocAuth blocAuth = blocCore.getBlocModule<BlocAuth>(BlocAuth.name);
     final ResponsiveBloc responsiveBloc =
         blocCore.getBlocModule<ResponsiveBloc>(ResponsiveBloc.name);
