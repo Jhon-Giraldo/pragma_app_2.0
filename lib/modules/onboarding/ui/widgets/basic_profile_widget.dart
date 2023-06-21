@@ -60,7 +60,8 @@ class BasicProfileWidget extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: 200,
+            top: 0,
+            left: 130,
             child: DecoratedBox(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
