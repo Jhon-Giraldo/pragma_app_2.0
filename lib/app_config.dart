@@ -10,13 +10,12 @@ import 'blocs/onboarding_bloc.dart';
 import 'blocs/theme_bloc.dart';
 import 'entities/entity_bloc.dart';
 import 'mock/mock_google_session_data_provider.dart';
-import 'modules/demo/blocs/bloc_demo.dart';
 import 'providers/auth_session_provider.dart';
 import 'providers/my_app_navigator_provider.dart';
 import 'services/service_google_sign_in.dart';
 import 'services/theme_config.dart';
 import 'services/theme_service.dart';
-import 'ui/pages/login_page.dart';
+import 'ui/pages/login_stream_page.dart';
 import 'ui/pages/my_onboarding_page.dart';
 
 bool _init = false;
@@ -48,7 +47,7 @@ FutureOr<void> demoInsert(BlocCore<dynamic> blocCoreInt) async {
   blocCoreInt
       .getBlocModule<NavigatorBloc>(NavigatorBloc.name)
       .setHomePageAndUpdate(
-        LoginMainPage(
+        LoginStreamPage(
           navigatorBloc: blocCoreInt.getBlocModule(NavigatorBloc.name),
           responsivebLOC: blocCoreInt.getBlocModule(ResponsiveBloc.name),
           blocAuth: blocCoreInt.getBlocModule<BlocAuth>(BlocAuth.name),
@@ -83,17 +82,18 @@ Future<void> onboarding({
     );
 
     // Inyectamos el demo
-    blocCoreInt.addBlocModule(
-      BlocDemo.name,
-      BlocDemo(
-        drawerMainMenuBloc: blocCoreInt
-            .getBlocModule<DrawerMainMenuBloc>(DrawerMainMenuBloc.name),
-        drawerSecondaryMenuBloc:
-            blocCoreInt.getBlocModule<DrawerSecondaryMenuBloc>(
-          DrawerSecondaryMenuBloc.name,
-        ),
-      ),
-    );
+    // blocCoreInt.addBlocModule(
+    //   BlocDemo.name,
+    //   BlocDemo(
+    //     drawerMainMenuBloc: blocCoreInt
+    //         .getBlocModule<DrawerMainMenuBloc>(DrawerMainMenuBloc.name),
+    //     drawerSecondaryMenuBloc:
+    //         blocCoreInt.getBlocModule<DrawerSecondaryMenuBloc>(
+    //       DrawerSecondaryMenuBloc.name,
+    //     ),
+    //   ),
+    // );
+
     blocCoreInt.addBlocModule(
       OnboardingBloc.name,
       OnboardingBloc(

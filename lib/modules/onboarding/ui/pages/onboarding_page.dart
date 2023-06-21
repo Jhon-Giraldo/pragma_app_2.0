@@ -22,11 +22,10 @@ class OnboardingPage extends StatelessWidget {
     const Widget spaceCard = SizedBox(height: 20);
     return MyAppScaffold(
       withAppbar: false,
-      backgroundColor: const Color(0xFF170339),
-      //    backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.background,
       child: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(top: 20),
+          padding: const EdgeInsets.only(top: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[

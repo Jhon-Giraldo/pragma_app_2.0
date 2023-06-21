@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import '../entities/entity_bloc.dart';
+import '../models/bloc_auth_state.dart';
 import '../models/model_user.dart';
 import '../providers/auth_session_provider.dart';
-import '../models/bloc_auth_state.dart';
 
 class BlocAuth extends BlocModule {
   BlocAuth({required this.authSessionProvider});
@@ -29,6 +29,22 @@ class BlocAuth extends BlocModule {
     } finally {
       _authBloc.value = _authBloc.value.copyWith(isLoading: false);
     }
+  }
+
+  Future<void> verifySession(
+    void Function(BlocAuthState userModel) function,
+  ) async {
+    _addFunctionToSessionStream(
+      'redirectToHomePage',
+      function,
+    );
+  }
+
+  void _addFunctionToSessionStream(
+    String keyFunction,
+    void Function(BlocAuthState userModel) function,
+  ) {
+    _authBloc.addFunctionToProcessTValueOnStream(keyFunction, function);
   }
 
   @override

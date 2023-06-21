@@ -59,6 +59,7 @@ class MyAppScaffold extends StatelessWidget {
       children: <Widget>[
         SafeArea(
           child: Scaffold(
+            backgroundColor: backgroundColor,
             appBar: withAppbar
                 ? MyAppBarWidget(
                     navigatorBloc: navigatorBloc,

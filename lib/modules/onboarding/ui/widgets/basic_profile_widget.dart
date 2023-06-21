@@ -33,12 +33,12 @@ class BasicProfileWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Padding(
-                    padding: EdgeInsets.only(bottom: 15),
+                    padding: const EdgeInsets.only(bottom: 15),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         Text(
-                          "User name",
+                          'User name',
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.background,
                             fontSize: 18,
@@ -48,14 +48,14 @@ class BasicProfileWidget extends StatelessWidget {
                           height: 8,
                         ),
                         Text(
-                          "User Seniority",
+                          'User Seniority',
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.background,
                             fontSize: 15,
                           ),
                         ),
                       ],
-                    )),
+                    ),),
               ),
             ),
           ),
@@ -71,7 +71,7 @@ class BasicProfileWidget extends StatelessWidget {
                       offset: const Offset(0, 5),
                       blurRadius: 20.0,
                     ),
-                  ]),
+                  ],),
               child: CircleAvatar(
                 radius: 30,
                 backgroundColor: Colors.purple[900],
