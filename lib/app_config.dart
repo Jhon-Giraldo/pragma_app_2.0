@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'blocs/bloc_auth.dart';
 import 'blocs/bloc_drawer.dart';
 import 'blocs/bloc_processing.dart';
 import 'blocs/bloc_responsive.dart';
@@ -8,11 +9,14 @@ import 'blocs/navigator_bloc.dart';
 import 'blocs/onboarding_bloc.dart';
 import 'blocs/theme_bloc.dart';
 import 'entities/entity_bloc.dart';
+import 'mock/mock_google_session_data_provider.dart';
 import 'modules/demo/blocs/bloc_demo.dart';
-import 'modules/demo/ui/pages/demo_home_page.dart';
+import 'providers/auth_session_provider.dart';
 import 'providers/my_app_navigator_provider.dart';
+import 'services/service_google_sign_in.dart';
 import 'services/theme_config.dart';
 import 'services/theme_service.dart';
+import 'ui/pages/login_page.dart';
 import 'ui/pages/my_onboarding_page.dart';
 
 bool _init = false;
@@ -24,7 +28,14 @@ final BlocCore<dynamic> blocCore = BlocCore<dynamic>(<String, BlocModule>{
   BlocProcessing.name: BlocProcessing(),
   DrawerMainMenuBloc.name: DrawerMainMenuBloc(),
   DrawerSecondaryMenuBloc.name: DrawerSecondaryMenuBloc(),
-  NavigatorBloc.name: NavigatorBloc(myPageManager)
+  NavigatorBloc.name: NavigatorBloc(myPageManager),
+  BlocAuth.name: BlocAuth(
+    authSessionProvider: AuthSessionProvider(
+      googleAuthService: ServiceGoogleSignIn(
+        mockGoogleSessionDataProvider: MockGoogleSessionDataProvider(),
+      ),
+    ),
+  )
 });
 
 FutureOr<void> testMe() async {
@@ -37,13 +48,14 @@ FutureOr<void> demoInsert(BlocCore<dynamic> blocCoreInt) async {
   blocCoreInt
       .getBlocModule<NavigatorBloc>(NavigatorBloc.name)
       .setHomePageAndUpdate(
-        DemoHomePage(
-          blocDemo: blocCoreInt.getBlocModule<BlocDemo>(BlocDemo.name),
+        LoginMainPage(
+          blocAuth: blocCoreInt.getBlocModule<BlocAuth>(BlocAuth.name),
         ),
       );
+
   blocCoreInt
       .getBlocModule<NavigatorBloc>(NavigatorBloc.name)
-      .setTitle('Demo Home');
+      .setTitle('Pragma App');
 }
 
 Future<void> onboarding({
@@ -63,6 +75,7 @@ Future<void> onboarding({
           lightColorScheme: lightColorScheme,
           darkColorScheme: darkColorScheme,
           colorSeed: colorSeed,
+          isDark: true,
         ),
       ),
     );
@@ -83,15 +96,13 @@ Future<void> onboarding({
       OnboardingBloc.name,
       OnboardingBloc(
         <FutureOr<void> Function()>[
-          testMe,
-          testMe,
-          testMe,
           () async {
             await demoInsert(blocCoreInt);
           }
         ],
       ),
     );
+
 // redirigimos al onboarding
     blocCoreInt
         .getBlocModule<NavigatorBloc>(NavigatorBloc.name)

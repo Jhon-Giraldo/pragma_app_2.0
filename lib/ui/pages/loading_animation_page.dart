@@ -10,10 +10,10 @@ class LoadingAnimationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color(0xFF170339),
-        body: Center(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        body: const Center(
           child: Stack(
             children: <Widget>[
               LoadingAnimationCircleWidget1(),
