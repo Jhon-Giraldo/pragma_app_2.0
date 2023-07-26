@@ -5,8 +5,8 @@ import '../../blocs/bloc_responsive.dart';
 import '../../blocs/navigator_bloc.dart';
 import '../../models/bloc_auth_state.dart';
 import '../../modules/onboarding/ui/pages/onboarding_page.dart';
-import 'loading_animation_page.dart';
 import '../widgets/login_access_widget.dart';
+import 'loading_animation_page.dart';
 
 class LoginStreamPage extends StatelessWidget {
   const LoginStreamPage({
@@ -32,14 +32,14 @@ class LoginStreamPage extends StatelessWidget {
               return const LoadingAnimationPage();
             }
             if (snapshot.data?.hasError != null) {
-              return Center(
+              Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       snapshot.data!.hasError!,
                       style: const TextStyle(color: Colors.white),
-                    ),
+                    )
                   ],
                 ),
               );
