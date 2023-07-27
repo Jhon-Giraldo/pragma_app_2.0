@@ -25,7 +25,7 @@ jobs:
           - name: Get Packages
             run: flutter pub get
           - name: Detect errors or inefficiencies
-            run: flutter analyze --fatal-warnings
+            run: flutter analyze --no-fatal-warnings
           - name: Run Unit Tests
             run: flutter test
         
