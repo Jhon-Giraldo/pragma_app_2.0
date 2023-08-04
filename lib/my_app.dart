@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       stream: blocCore.getBlocModule<ThemeBloc>(ThemeBloc.name).themeDataStream,
       builder: (BuildContext context, AsyncSnapshot<ThemeData> snapshot) {
         return MaterialApp.router(
-          title: 'Arquetipo pragma',
+          title: 'Pragma App 2.0',
           theme: snapshot.data,
           routerDelegate: routerDelegate,
           routeInformationParser: routeInformationParser,

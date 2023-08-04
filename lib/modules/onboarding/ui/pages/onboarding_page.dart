@@ -61,7 +61,7 @@ class OnboardingPage extends StatelessWidget {
                   CardOptionWidget(
                     responsiveBloc: responsiveBloc,
                     urlImage: 'assets/img/galaxia_asignacion.png',
-                    title: 'Asignación',
+                    title: 'Asignación ',
                     onTap: () {},
                   ),
                 ],
